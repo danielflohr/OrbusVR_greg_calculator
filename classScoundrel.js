@@ -145,20 +145,8 @@ function Scoundrel(data){
 			graphSpecificData.shootCard = cardInHand;
 		}
 		else if(cardInHand == CARD_ASH || cardInHand == CARD_WEAKNESS){
-			if(graphSpecificData.storedCard == CARD_ASH || graphSpecificData.storedCard == CARD_WEAKNESS){
-				graphSpecificData.burnEffect = EFFECT_CHEAT;
-				attack.tiles = BURN_CARD_TILE;
-				// graphSpecificData.shootCard = cardInHand;
-			}
-			else if(graphSpecificData.storedCard == CARD_POISON){
-				graphSpecificData.shootCard = CARD_POISON;
-				graphSpecificData.storedCard = CARD_NONE;
-				graphSpecificData.burnEffect = EFFECT_CHEAT;
-				attack.tiles = BURN_CARD_TILE;
-			}
-			else{
-				graphSpecificData.storedCard = cardInHand;
-			}
+			graphSpecificData.burnEffect = EFFECT_CHEAT;
+			attack.tiles = BURN_CARD_TILE;
 		}
 
 		// Make a new deck if there are no cards left in the deck.
@@ -312,7 +300,14 @@ function Scoundrel(data){
 			if(time < SCOUNDREL_CARD_TIME){
 				time = SCOUNDREL_CARD_TIME;
 			}
-			preModifierFuncs = handleNewSpawnedCard.bind({});
+			if(globalLoadout.PLAY_STYLE = 1)
+			{
+			preModifierFuncs = handleNewSpawnedCard1.bind({});
+			}
+			else //if(globalLoadout.PLAY_STYLE = 2)	
+			{
+			preModifierFuncs = handleNewSpawnedCard2.bind({});
+			}
 		}
 		const RANK_MULT = (1 + 0.1436*endRank);
 		damage *= RANK_MULT;
