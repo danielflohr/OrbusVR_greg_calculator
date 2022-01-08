@@ -231,6 +231,28 @@ if (needsDefaultValues || debug) {
 			calcCount:100,
 			PLAY_STYLE:1,
 		},
+		'Hybrid': {
+			savedAttacks: "X f BBBB(CCB CBB CB)*15 SssSsC BBBB(CCB CBB CB)*15 \nD*150",
+			savedTilesets: ['A26', '362F', 'F26', 'F62', 'F6A2'],
+			usingPotsFlag: true,
+			usingTilesetsFlag: true,
+			averagingCrits: true,
+			weaponAffixes: [{"lvl":30},{"plusLvl":7},{"strength":168},{"intellect":168},{"ICEHEART":{}},{"BLEED":{}}],
+			armourAffixes: {critChance:2*RING_CRIT_CHANCE,critDamage:0.08+RING_EMPOWERED,projectileDamage:0.04},
+			calcCount:100,
+			PLAY_STYLE:4,
+		},
+		'Hybrid Musket': {
+			savedAttacks: "X f BBBB(CCB CBB CB)*15 SssSsC BBBB(CCB CBB CB)*15 \nD*150 \n(a@)*20",
+			savedTilesets: ['2H6', 'FH6', '26H', 'F6H', 'AH6'],
+			usingPotsFlag: true,
+			usingTilesetsFlag: true,
+			averagingCrits: true,
+			weaponAffixes: [{"lvl":30},{"plusLvl":7},{"strength":168},{"intellect":168},{"ICEHEART":{}},{"BLEED":{}}],
+			armourAffixes: {critChance:2*RING_CRIT_CHANCE,critDamage:0.08+RING_EMPOWERED,projectileDamage:0.04},
+			calcCount:100,
+			PLAY_STYLE:4,
+		},
 		'lavawhale': {
 			savedAttacks: "X df (%d##f%d##fB %d##fB)*15 %d##g%d##gs%d##gs%d##g (%d##f%d##fB %d##fB)*15",
 			savedTilesets: ['72F', 'F27','F72', '27F', '2F7'],
@@ -240,7 +262,7 @@ if (needsDefaultValues || debug) {
 			weaponAffixes: [{"lvl":30},{"plusLvl":7},{"strength":168},{"intellect":168},{"ICEHEART":{}},{"BLEED":{}}],
 			armourAffixes: {critChance:2*RING_CRIT_CHANCE,critDamage:0.08+RING_EMPOWERED,projectileDamage:0.04},
 			calcCount:100,
-			PLAY_STYLE:4,
+			PLAY_STYLE:5,
 		},
 		'lavawhale musket': {
 			savedAttacks: "X df (%d##f%d##fB %d##fB)*15 %d##g%d##gs%d##gs%d##g (%d##f%d##fB %d##fB)*15 \n(h@)*20",
@@ -251,7 +273,7 @@ if (needsDefaultValues || debug) {
 			weaponAffixes: [{"lvl":30},{"plusLvl":7},{"strength":168},{"intellect":168},{"ICEHEART":{}},{"BLEED":{}}],
 			armourAffixes: {critChance:2*RING_CRIT_CHANCE,critDamage:0.08+RING_EMPOWERED,projectileDamage:0.04},
 			calcCount:100,
-			PLAY_STYLE:4,
+			PLAY_STYLE:5,
 		}
 	};
 	res[RANGER_VALUE] = {
