@@ -218,7 +218,7 @@ function Scoundrel(data){
 			case 4:
 				if(cardInHand == CARD_FROST || cardInHand == CARD_HEAL){
 					graphSpecificData.burnEffect = EFFECT_BOOST;
-					//attack.tiles = BURN_CARD_TILE;
+					attack.tiles = BURN_CARD_TILE;
 					hasBurned = 1;
 					if(graphSpecificData.storedCard == CARD_POISON){
 						graphSpecificData.shootCard = CARD_POISON;
@@ -234,7 +234,7 @@ function Scoundrel(data){
 				}
 				else if(cardInHand == CARD_ASH || cardInHand == CARD_WEAKNESS){
 					graphSpecificData.burnEffect = EFFECT_CHEAT;
-					//attack.tiles = BURN_CARD_TILE;
+					attack.tiles = BURN_CARD_TILE;
 					hasBurned = 1;
 				}
 				break;
@@ -295,11 +295,6 @@ function Scoundrel(data){
 
 		// Add damage to the rotation when a card is being used to shoot.
 		if(graphSpecificData.shootCard != CARD_NONE){
-			if(hasBurned == 1)
-			{
-				attack.tiles = BURN_CARD_TILE;
-				hasBurned = 0;
-			}
 			if(graphSpecificData.burnEffect == EFFECT_BOOST){
 				boost += 0.22725;
 			}
