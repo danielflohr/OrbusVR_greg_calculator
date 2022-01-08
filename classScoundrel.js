@@ -247,10 +247,10 @@ function Scoundrel(data){
 		var poisons = 0;
 		var shuffles = 0;
 		for(let i = 0; i < deck.length; i++){
-			if(deck(i) == CARD_ASH || deck(i) == CARD_WEAKNESS){
+			if(deck[i] == CARD_ASH || deck[i] == CARD_WEAKNESS){
 				shuffles++;	
 			}
-			else if(deck(i) == CARD_POISON){
+			else if(deck[i] == CARD_POISON){
 				poisons++;
 			}
 		}
