@@ -61,60 +61,180 @@ function Scoundrel(data){
 	}
 
 	const BURN_CARD_TILE = "F";
-	function handleNewSpawnedCard1(attack, targetPatternData, graphSpecificData, timePassed) {
+	function handleNewSpawnedCard(attack, targetPatternData, graphSpecificData, timePassed) {
 		// Grab first card from the deck and remove it from the deck.
 		var cardInHand = graphSpecificData.deck.shift();
 		attack.tiles = "";
 
 		// Always burn the frost and heal card for more tilesets dps. (worth more than the extra boost of getting an potency card hit)
-		if(cardInHand == CARD_FROST || cardInHand == CARD_HEAL){
-			graphSpecificData.burnEffect = EFFECT_BOOST;
-			attack.tiles = BURN_CARD_TILE;
-			if(graphSpecificData.storedCard == CARD_POISON){
-				graphSpecificData.shootCard = CARD_POISON;
-				graphSpecificData.storedCard = CARD_NONE;
-			}
-		}
-		// Always shoot flame cards because they do more damage.
-		else if(cardInHand == CARD_FLAME){
-			graphSpecificData.shootCard = cardInHand;
-		}
-		else if(cardInHand == CARD_POISON){
-			// Just shoot the card on already stored poison.
-			if(graphSpecificData.burnEffect == EFFECT_CHEAT){
-				graphSpecificData.shootCard = cardInHand;
-			}
-			else if(graphSpecificData.storedCard == CARD_POISON){
-				graphSpecificData.shootCard = cardInHand;
-			}
-			// Shoot the card and also burn the already stored ash or weakness to spawn more poisons.
-			else if(graphSpecificData.storedCard == CARD_ASH || graphSpecificData.storedCard == CARD_WEAKNESS){
-				graphSpecificData.shootCard = cardInHand;
-				graphSpecificData.storedCard = CARD_NONE;
-				graphSpecificData.burnEffect = EFFECT_CHEAT;
-				attack.tiles = BURN_CARD_TILE;
-			}
-			// Just store the card for later use
-			else{
-				graphSpecificData.storedCard = cardInHand;
-			}
-		}
-		else if(cardInHand == CARD_ASH || cardInHand == CARD_WEAKNESS){
-			if(graphSpecificData.storedCard == CARD_ASH || graphSpecificData.storedCard == CARD_WEAKNESS){
-				graphSpecificData.burnEffect = EFFECT_CHEAT;
-				attack.tiles = BURN_CARD_TILE;
-				// graphSpecificData.shootCard = cardInHand;
-			}
-			else if(graphSpecificData.storedCard == CARD_POISON){
-				graphSpecificData.shootCard = CARD_POISON;
-				graphSpecificData.storedCard = CARD_NONE;
-				graphSpecificData.burnEffect = EFFECT_CHEAT;
-				attack.tiles = BURN_CARD_TILE;
-			}
-			else{
-				graphSpecificData.storedCard = cardInHand;
-			}
-		}
+		switch (globalLoadout.PLAY_STYLE){
+			case 1:
+				if(cardInHand == CARD_FROST || cardInHand == CARD_HEAL){
+					graphSpecificData.burnEffect = EFFECT_BOOST;
+					attack.tiles = BURN_CARD_TILE;
+				}
+				// Always shoot flame cards because they do more damage.
+				else if(cardInHand == CARD_FLAME){
+					graphSpecificData.shootCard = cardInHand;
+				}
+				else if(cardInHand == CARD_POISON){
+					// Just shoot the card on already stored poison.
+					if(graphSpecificData.burnEffect == EFFECT_CHEAT){
+						graphSpecificData.shootCard = cardInHand;
+					}
+					else if(graphSpecificData.storedCard == CARD_POISON){
+						graphSpecificData.shootCard = cardInHand;
+					}
+					// Shoot the card and also burn the already stored ash or weakness to spawn more poisons.
+					else if(graphSpecificData.storedCard == CARD_ASH || graphSpecificData.storedCard == CARD_WEAKNESS){
+						graphSpecificData.shootCard = cardInHand;
+						graphSpecificData.storedCard = CARD_NONE;
+						graphSpecificData.burnEffect = EFFECT_CHEAT;
+						attack.tiles = BURN_CARD_TILE;
+					}
+					// Just store the card for later use
+					else{
+						graphSpecificData.storedCard = cardInHand;
+					}
+				}
+				else if(cardInHand == CARD_ASH || cardInHand == CARD_WEAKNESS){
+					if(graphSpecificData.storedCard == CARD_ASH || graphSpecificData.storedCard == CARD_WEAKNESS){
+						graphSpecificData.burnEffect = EFFECT_CHEAT;
+						attack.tiles = BURN_CARD_TILE;
+						// graphSpecificData.shootCard = cardInHand;
+					}
+					else if(graphSpecificData.storedCard == CARD_POISON){
+						graphSpecificData.shootCard = CARD_POISON;
+						graphSpecificData.storedCard = CARD_NONE;
+						graphSpecificData.burnEffect = EFFECT_CHEAT;
+						attack.tiles = BURN_CARD_TILE;
+					}
+					else{
+						graphSpecificData.storedCard = cardInHand;
+					}
+				}
+				break;
+			case 2:
+				if(cardInHand == CARD_FROST || cardInHand == CARD_HEAL){
+					graphSpecificData.burnEffect = EFFECT_BOOST;
+					attack.tiles = BURN_CARD_TILE;
+					if(graphSpecificData.storedCard == CARD_POISON){
+						graphSpecificData.shootCard = CARD_POISON;
+						graphSpecificData.storedCard = CARD_NONE;
+					}
+				}
+				// Always shoot flame cards because they do more damage.
+				else if(cardInHand == CARD_FLAME){
+					graphSpecificData.shootCard = cardInHand;
+				}
+				else if(cardInHand == CARD_POISON){
+					// Just shoot the card on already stored poison.
+					if(graphSpecificData.burnEffect == EFFECT_CHEAT){
+						graphSpecificData.shootCard = cardInHand;
+					}
+					else if(graphSpecificData.storedCard == CARD_POISON){
+						graphSpecificData.shootCard = cardInHand;
+					}
+					// Shoot the card and also burn the already stored ash or weakness to spawn more poisons.
+					else if(graphSpecificData.storedCard == CARD_ASH || graphSpecificData.storedCard == CARD_WEAKNESS){
+						graphSpecificData.shootCard = cardInHand;
+						graphSpecificData.storedCard = CARD_NONE;
+						graphSpecificData.burnEffect = EFFECT_CHEAT;
+						attack.tiles = BURN_CARD_TILE;
+					}
+					// Just store the card for later use
+					else{
+						graphSpecificData.storedCard = cardInHand;
+					}
+				}
+				else if(cardInHand == CARD_ASH || cardInHand == CARD_WEAKNESS){
+					if(graphSpecificData.storedCard == CARD_ASH || graphSpecificData.storedCard == CARD_WEAKNESS){
+						graphSpecificData.burnEffect = EFFECT_CHEAT;
+						attack.tiles = BURN_CARD_TILE;
+						// graphSpecificData.shootCard = cardInHand;
+					}
+					else if(graphSpecificData.storedCard == CARD_POISON){
+						graphSpecificData.shootCard = CARD_POISON;
+						graphSpecificData.storedCard = CARD_NONE;
+						graphSpecificData.burnEffect = EFFECT_CHEAT;
+						attack.tiles = BURN_CARD_TILE;
+					}
+					else{
+						graphSpecificData.storedCard = cardInHand;
+					}
+				}
+				break;
+			case 3:
+				if(cardInHand == CARD_FROST || cardInHand == CARD_HEAL){
+					graphSpecificData.burnEffect = EFFECT_BOOST;
+					attack.tiles = BURN_CARD_TILE;
+					if(graphSpecificData.storedCard == CARD_POISON && morePoison(graphSpecificData.deck)){
+						graphSpecificData.shootCard = CARD_POISON;
+						graphSpecificData.storedCard = CARD_NONE;
+					}
+				}
+				// Always shoot flame cards because they do more damage.
+				else if(cardInHand == CARD_FLAME){
+					graphSpecificData.shootCard = cardInHand;
+				}
+				else if(cardInHand == CARD_POISON){
+					// Just shoot the card on already stored poison.
+					if(graphSpecificData.burnEffect == EFFECT_CHEAT){
+						graphSpecificData.shootCard = cardInHand;
+					}
+					else if(graphSpecificData.storedCard == CARD_POISON || (graphSpecificData.burnEffect == EFFECT_BOOST && morePoison(graphSpecificData.deck))){
+						graphSpecificData.shootCard = cardInHand;
+					}
+					// Shoot the card and also burn the already stored ash or weakness to spawn more poisons.
+					else if(graphSpecificData.storedCard == CARD_ASH || graphSpecificData.storedCard == CARD_WEAKNESS){
+						graphSpecificData.shootCard = cardInHand;
+						graphSpecificData.storedCard = CARD_NONE;
+						graphSpecificData.burnEffect = EFFECT_CHEAT;
+						attack.tiles = BURN_CARD_TILE;
+					}
+					// Just store the card for later use
+					else{
+						graphSpecificData.storedCard = cardInHand;
+					}
+				}
+				else if(cardInHand == CARD_ASH || cardInHand == CARD_WEAKNESS){
+					if(graphSpecificData.storedCard == CARD_ASH || graphSpecificData.storedCard == CARD_WEAKNESS){
+						graphSpecificData.burnEffect = EFFECT_CHEAT;
+						attack.tiles = BURN_CARD_TILE;
+						// graphSpecificData.shootCard = cardInHand;
+					}
+					else if(graphSpecificData.storedCard == CARD_POISON){
+						graphSpecificData.shootCard = CARD_POISON;
+						graphSpecificData.storedCard = CARD_NONE;
+						graphSpecificData.burnEffect = EFFECT_CHEAT;
+						attack.tiles = BURN_CARD_TILE;
+					}
+					else{
+						graphSpecificData.storedCard = cardInHand;
+					}
+				}
+				break;
+			case 4:
+				if(cardInHand == CARD_FROST || cardInHand == CARD_HEAL){
+					graphSpecificData.burnEffect = EFFECT_BOOST;
+					attack.tiles = BURN_CARD_TILE;
+					if(graphSpecificData.storedCard == CARD_POISON){
+						graphSpecificData.shootCard = CARD_POISON;
+						graphSpecificData.storedCard = CARD_NONE;
+					}
+				}
+				// Always shoot flame cards because they do more damage.
+				else if(cardInHand == CARD_FLAME){
+					graphSpecificData.shootCard = cardInHand;
+				}
+				else if(cardInHand == CARD_POISON){			
+					graphSpecificData.shootCard = cardInHand;
+				}
+				else if(cardInHand == CARD_ASH || cardInHand == CARD_WEAKNESS){
+					graphSpecificData.burnEffect = EFFECT_CHEAT;
+					attack.tiles = BURN_CARD_TILE;
+				}
+				break;
 
 		// Make a new deck if there are no cards left in the deck.
 		if(graphSpecificData.deck.length == 0){
@@ -123,37 +243,18 @@ function Scoundrel(data){
 		return 1;
 	}
 	
-	function handleNewSpawnedCard2(attack, targetPatternData, graphSpecificData, timePassed) {
-		// Grab first card from the deck and remove it from the deck.
-		var cardInHand = graphSpecificData.deck.shift();
-		attack.tiles = "";
-
-		// Always burn the frost and heal card for more tilesets dps. (worth more than the extra boost of getting an potency card hit)
-		if(cardInHand == CARD_FROST || cardInHand == CARD_HEAL){
-			graphSpecificData.burnEffect = EFFECT_BOOST;
-			attack.tiles = BURN_CARD_TILE;
-			if(graphSpecificData.storedCard == CARD_POISON){
-				graphSpecificData.shootCard = CARD_POISON;
-				graphSpecificData.storedCard = CARD_NONE;
+	function morePoison(deck) {
+		var poisons = 0;
+		var shuffles = 0;
+		for(let i = 0; i < deck.length; i++){
+			if(deck(i) == CARD_ASH || deck(i) == CARD_WEAKNESS){
+				shuffles++;	
+			}
+			else if(deck(i) == CARD_POISON){
+				poisons++;
 			}
 		}
-		// Always shoot flame cards because they do more damage.
-		else if(cardInHand == CARD_FLAME){
-			graphSpecificData.shootCard = cardInHand;
-		}
-		else if(cardInHand == CARD_POISON){			
-			graphSpecificData.shootCard = cardInHand;
-		}
-		else if(cardInHand == CARD_ASH || cardInHand == CARD_WEAKNESS){
-			graphSpecificData.burnEffect = EFFECT_CHEAT;
-			attack.tiles = BURN_CARD_TILE;
-		}
-
-		// Make a new deck if there are no cards left in the deck.
-		if(graphSpecificData.deck.length == 0){
-			graphSpecificData.deck = generateRandomDeck();
-		}
-		return 1;
+		return (poisons >= shuffles);
 	}
 	
 	const CRIT_BOOST_EXPIRE_TIME = 18;
@@ -300,14 +401,7 @@ function Scoundrel(data){
 			if(time < SCOUNDREL_CARD_TIME){
 				time = SCOUNDREL_CARD_TIME;
 			}
-			if(globalLoadout.PLAY_STYLE == 1)
-			{
-			preModifierFuncs = handleNewSpawnedCard1.bind({});
-			}
-			else //if(globalLoadout.PLAY_STYLE == 2)	
-			{
-			preModifierFuncs = handleNewSpawnedCard2.bind({});
-			}
+			preModifierFuncs = handleNewSpawnedCard.bind({});
 		}
 		const RANK_MULT = (1 + 0.1436*endRank);
 		damage *= RANK_MULT;
@@ -347,7 +441,7 @@ var ClassScoundrel = {
 		// // then 8 cards too. This means the time of a single card needs to be reduced to
 		// // mirror the time it takes to make a full card rotation (7.9473 cards)
 		// const CARD_TIME_REDUCTION_SCOUNDREL = 1.0 / 8.0 * 7.9473;
-		if(globalLoadout.PLAY_STYLE == 1)
+		if(globalLoadout.PLAY_STYLE < 4)
 		{
 			var scoundrel = new Scoundrel({
 
@@ -355,7 +449,7 @@ var ClassScoundrel = {
 				strBoost:globalStrengthBoost, intBoost:globalIntellectBoost,projectileIncrease:globalArmourProjectileDamage
 			});
 		}
-		else //if(globalLoadout.PLAY_STYLE == 2)
+		else //if(globalLoadout.PLAY_STYLE == 4)
 		{
 			var scoundrel = new Scoundrel({
 				talentlvl5:"Full Chamber",talentlvl10:"Stack The Deck",talentlvl15:"On the Line",talentlvl20:"One Basket",talentlvl30:"True Gambler",
