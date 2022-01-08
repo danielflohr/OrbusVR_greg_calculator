@@ -221,7 +221,7 @@ if (needsDefaultValues || debug) {
 			PLAY_STYLE:3,
 		},
 		'scott musket': {
-			savedAttacks: "X f BBBB(CCB CBB CB)*15 SssSsC BBBB(CCB CBB CB)*15 \nD*150 \n(a@)*20",
+			savedAttacks: "X f BBBB(CCB CBB CB)*15 SssSsC BBBB(CCB CBB CB)*15 \nD*150 \n(h@)*20",
 			savedTilesets: ['2H6', 'FH6', '26H', 'F6H', 'AH6'],
 			usingPotsFlag: true,
 			usingTilesetsFlag: true,
@@ -233,7 +233,7 @@ if (needsDefaultValues || debug) {
 		},
 		'Hybrid': {
 			savedAttacks: "X f BBBB(CCB CBB CB)*15 SssSsC BBBB(CCB CBB CB)*15 \nD*150",
-			savedTilesets: ['A26', '362F', 'F26', 'F62', 'F6A2'],
+			savedTilesets: ['A26', '362', 'F26', 'F62', '26F'],
 			usingPotsFlag: true,
 			usingTilesetsFlag: true,
 			averagingCrits: true,
@@ -243,7 +243,7 @@ if (needsDefaultValues || debug) {
 			PLAY_STYLE:4,
 		},
 		'Hybrid Musket': {
-			savedAttacks: "X f BBBB(CCB CBB CB)*15 SssSsC BBBB(CCB CBB CB)*15 \nD*150 \n(a@)*20",
+			savedAttacks: "X f BBBB(CCB CBB CB)*15 SssSsC BBBB(CCB CBB CB)*15 \nD*150 \n(h@)*20",
 			savedTilesets: ['2H6', 'FH6', '26H', 'F6H', 'AH6'],
 			usingPotsFlag: true,
 			usingTilesetsFlag: true,
