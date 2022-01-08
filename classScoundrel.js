@@ -182,15 +182,15 @@ function Scoundrel(data){
 					if(graphSpecificData.burnEffect == EFFECT_CHEAT){
 						graphSpecificData.shootCard = cardInHand;
 					}
-					else if(graphSpecificData.storedCard == CARD_POISON || (graphSpecificData.burnEffect == EFFECT_BOOST && morePoison(graphSpecificData.deck))){
-						graphSpecificData.shootCard = cardInHand;
-					}
 					// Shoot the card and also burn the already stored ash or weakness to spawn more poisons.
 					else if(graphSpecificData.storedCard == CARD_ASH || graphSpecificData.storedCard == CARD_WEAKNESS){
 						graphSpecificData.shootCard = cardInHand;
 						graphSpecificData.storedCard = CARD_NONE;
 						graphSpecificData.burnEffect = EFFECT_CHEAT;
 						attack.tiles = BURN_CARD_TILE;
+					}
+					else if(graphSpecificData.storedCard == CARD_POISON || (graphSpecificData.burnEffect == EFFECT_BOOST && morePoison(graphSpecificData.deck))){
+						graphSpecificData.shootCard = cardInHand;
 					}
 					// Just store the card for later use
 					else{
