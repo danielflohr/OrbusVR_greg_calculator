@@ -218,6 +218,40 @@ function Scoundrel(data){
 				if(cardInHand == CARD_FROST || cardInHand == CARD_HEAL){
 					graphSpecificData.burnEffect = EFFECT_BOOST;
 					attack.tiles = BURN_CARD_TILE;
+				}
+				// Always shoot flame cards because they do more damage.
+				else if(cardInHand == CARD_FLAME){
+					graphSpecificData.shootCard = cardInHand;
+				}
+				else if(cardInHand == CARD_POISON){
+					// Just shoot the card on already stored poison.
+					if(graphSpecificData.burnEffect == EFFECT_CHEAT || graphSpecificData.storedCard == CARD_POISON){
+						graphSpecificData.shootCard = cardInHand;
+					}
+					else{
+						graphSpecificData.storedCard = cardInHand;
+					}
+				}
+				else if(cardInHand == CARD_ASH){
+					if(graphSpecificData.storedCard == CARD_POISON){
+						graphSpecificData.shootCard = CARD_POISON;
+						graphSpecificData.storedCard = CARD_NONE;
+						graphSpecificData.burnEffect = EFFECT_CHEAT;
+						attack.tiles = BURN_CARD_TILE;
+					}
+					else{
+						graphSpecificData.burnEffect = EFFECT_CHEAT;
+						attack.tiles = BURN_CARD_TILE;
+					}
+				}
+				else if(cardInHand == CARD_WEAKNESS){
+					graphSpecificData.shootCard = cardInHand;
+				}
+				break;
+			case 5:
+				if(cardInHand == CARD_FROST || cardInHand == CARD_HEAL){
+					graphSpecificData.burnEffect = EFFECT_BOOST;
+					attack.tiles = BURN_CARD_TILE;
 					if(graphSpecificData.storedCard == CARD_POISON){
 						graphSpecificData.shootCard = CARD_POISON;
 						graphSpecificData.storedCard = CARD_NONE;
@@ -447,7 +481,7 @@ var ClassScoundrel = {
 		// // then 8 cards too. This means the time of a single card needs to be reduced to
 		// // mirror the time it takes to make a full card rotation (7.9473 cards)
 		// const CARD_TIME_REDUCTION_SCOUNDREL = 1.0 / 8.0 * 7.9473;
-		if(globalLoadout.PLAY_STYLE < 4)
+		if(globalLoadout.PLAY_STYLE < 5)
 		{
 			var scoundrel = new Scoundrel({
 
