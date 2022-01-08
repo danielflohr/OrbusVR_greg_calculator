@@ -196,6 +196,7 @@ if (needsDefaultValues || debug) {
 			weaponAffixes: [{"lvl":30},{"plusLvl":7},{"strength":168},{"intellect":168},{"ICEHEART":{}},{"BLEED":{}}],
 			armourAffixes: {critChance:2*RING_CRIT_CHANCE,critDamage:0.08+RING_EMPOWERED,projectileDamage:0.04},
 			calcCount:100,
+			PLAY_STYLE:1,
 		},
 		'scott musket': {
 			savedAttacks: "X f BBBB(CCB CBB CB)*15 SssSsC BBBB(CCB CBB CB)*15 \nD*150",
@@ -206,9 +207,10 @@ if (needsDefaultValues || debug) {
 			weaponAffixes: [{"lvl":30},{"plusLvl":7},{"strength":168},{"intellect":168},{"ICEHEART":{}},{"BLEED":{}}],
 			armourAffixes: {critChance:2*RING_CRIT_CHANCE,critDamage:0.08+RING_EMPOWERED,projectileDamage:0.04},
 			calcCount:100,
+			PLAY_STYLE:1,
 		},
 		'lavawhale': {
-			savedAttacks: "X f BBBB(CCB CBB CB)*15 SssSsC BBBB(CCB CBB CB)*15 \nD*150",
+			savedAttacks: "X Df (DCDCB DCB)*15 DSDSsDSsDS (DCDCB DCB)*15",
 			savedTilesets: ['F32', '2F3','32F', '3A2', '23A'],
 			usingPotsFlag: true,
 			usingTilesetsFlag: true,
@@ -216,6 +218,7 @@ if (needsDefaultValues || debug) {
 			weaponAffixes: [{"lvl":30},{"plusLvl":7},{"strength":168},{"intellect":168},{"ICEHEART":{}},{"BLEED":{}}],
 			armourAffixes: {critChance:2*RING_CRIT_CHANCE,critDamage:0.08+RING_EMPOWERED,projectileDamage:0.04},
 			calcCount:100,
+			PLAY_STYLE:2,
 		},
 		'lavawhale musket': {
 			savedAttacks: "X f BBBB(CCB CBB CB)*15 SssSsC BBBB(CCB CBB CB)*15 \nD*150",
@@ -226,6 +229,7 @@ if (needsDefaultValues || debug) {
 			weaponAffixes: [{"lvl":30},{"plusLvl":7},{"strength":168},{"intellect":168},{"ICEHEART":{}},{"BLEED":{}}],
 			armourAffixes: {critChance:2*RING_CRIT_CHANCE,critDamage:0.08+RING_EMPOWERED,projectileDamage:0.04},
 			calcCount:100,
+			PLAY_STYLE:2,
 		}
 	};
 	res[RANGER_VALUE] = {
