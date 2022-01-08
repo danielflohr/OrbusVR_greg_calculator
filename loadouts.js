@@ -221,7 +221,7 @@ if (needsDefaultValues || debug) {
 			PLAY_STYLE:3,
 		},
 		'scott musket': {
-			savedAttacks: "X f BBBB(CCB CBB CB)*15 SssSsC BBBB(CCB CBB CB)*15 \nD*150",
+			savedAttacks: "X f BBBB(CCB CBB CB)*15 SssSsC BBBB(CCB CBB CB)*15 \nD*150 \n(a@)*20",
 			savedTilesets: ['2H6', 'FH6', '26H', 'F6H', 'AH6'],
 			usingPotsFlag: true,
 			usingTilesetsFlag: true,
