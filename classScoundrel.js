@@ -61,7 +61,7 @@ function Scoundrel(data){
 	}
 
 	const BURN_CARD_TILE = "F";
-	function handleNewSpawnedCard(attack, targetPatternData, graphSpecificData, timePassed) {
+	function handleNewSpawnedCard1(attack, targetPatternData, graphSpecificData, timePassed) {
 		// Grab first card from the deck and remove it from the deck.
 		var cardInHand = graphSpecificData.deck.shift();
 		attack.tiles = "";
@@ -122,7 +122,52 @@ function Scoundrel(data){
 		}
 		return 1;
 	}
+	
+	function handleNewSpawnedCard2(attack, targetPatternData, graphSpecificData, timePassed) {
+		// Grab first card from the deck and remove it from the deck.
+		var cardInHand = graphSpecificData.deck.shift();
+		attack.tiles = "";
 
+		// Always burn the frost and heal card for more tilesets dps. (worth more than the extra boost of getting an potency card hit)
+		if(cardInHand == CARD_FROST || cardInHand == CARD_HEAL){
+			graphSpecificData.burnEffect = EFFECT_BOOST;
+			attack.tiles = BURN_CARD_TILE;
+			if(graphSpecificData.storedCard == CARD_POISON){
+				graphSpecificData.shootCard = CARD_POISON;
+				graphSpecificData.storedCard = CARD_NONE;
+			}
+		}
+		// Always shoot flame cards because they do more damage.
+		else if(cardInHand == CARD_FLAME){
+			graphSpecificData.shootCard = cardInHand;
+		}
+		else if(cardInHand == CARD_POISON){			
+			graphSpecificData.shootCard = cardInHand;
+		}
+		else if(cardInHand == CARD_ASH || cardInHand == CARD_WEAKNESS){
+			if(graphSpecificData.storedCard == CARD_ASH || graphSpecificData.storedCard == CARD_WEAKNESS){
+				graphSpecificData.burnEffect = EFFECT_CHEAT;
+				attack.tiles = BURN_CARD_TILE;
+				// graphSpecificData.shootCard = cardInHand;
+			}
+			else if(graphSpecificData.storedCard == CARD_POISON){
+				graphSpecificData.shootCard = CARD_POISON;
+				graphSpecificData.storedCard = CARD_NONE;
+				graphSpecificData.burnEffect = EFFECT_CHEAT;
+				attack.tiles = BURN_CARD_TILE;
+			}
+			else{
+				graphSpecificData.storedCard = cardInHand;
+			}
+		}
+
+		// Make a new deck if there are no cards left in the deck.
+		if(graphSpecificData.deck.length == 0){
+			graphSpecificData.deck = generateRandomDeck();
+		}
+		return 1;
+	}
+	
 	const CRIT_BOOST_EXPIRE_TIME = 18;
 	function updateCritChance(attack, targetPatternData, graphSpecificData, timePassed){
 		// Remove expired crit talent icons.
@@ -307,11 +352,21 @@ var ClassScoundrel = {
 		// // then 8 cards too. This means the time of a single card needs to be reduced to
 		// // mirror the time it takes to make a full card rotation (7.9473 cards)
 		// const CARD_TIME_REDUCTION_SCOUNDREL = 1.0 / 8.0 * 7.9473;
+		if(globalLoadout.PLAY_STYLE == 1)
+		{
+			var scoundrel = new Scoundrel({
 
-		var scoundrel = new Scoundrel({
-			talentlvl5:"Slow Burn",talentlvl10:"Quick Draw",talentlvl15:"On the Line",talentlvl20:"Break Shot",talentlvl30:"True Gambler",
-			strBoost:globalStrengthBoost, intBoost:globalIntellectBoost,projectileIncrease:globalArmourProjectileDamage
-		});
+				talentlvl5:"Slow Burn",talentlvl10:"Quick Draw",talentlvl15:"On the Line",talentlvl20:"Break Shot",talentlvl30:"True Gambler",
+				strBoost:globalStrengthBoost, intBoost:globalIntellectBoost,projectileIncrease:globalArmourProjectileDamage
+			});
+		}
+		else //if(globalLoadout.PLAY_STYLE == 2)
+		{
+			var scoundrel = new Scoundrel({
+				talentlvl5:"Full Chamber",talentlvl10:"Stack The Deck",talentlvl15:"On the Line",talentlvl20:"One Basket",talentlvl30:"True Gambler",
+				strBoost:globalStrengthBoost, intBoost:globalIntellectBoost,projectileIncrease:globalArmourProjectileDamage
+			});
+		}
 		savedScoundrel = scoundrel;
 
 		// rank V (71.897% increase) Most scoundrel damage is pre-calculated to have the rank V dps increase.
