@@ -300,11 +300,11 @@ function Scoundrel(data){
 			if(time < SCOUNDREL_CARD_TIME){
 				time = SCOUNDREL_CARD_TIME;
 			}
-			if(globalLoadout.PLAY_STYLE = 1)
+			if(globalLoadout.PLAY_STYLE == 1)
 			{
 			preModifierFuncs = handleNewSpawnedCard1.bind({});
 			}
-			else //if(globalLoadout.PLAY_STYLE = 2)	
+			else //if(globalLoadout.PLAY_STYLE == 2)	
 			{
 			preModifierFuncs = handleNewSpawnedCard2.bind({});
 			}
