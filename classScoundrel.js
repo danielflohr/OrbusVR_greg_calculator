@@ -409,6 +409,9 @@ function Scoundrel(data){
 			}
 			preModifierFuncs = handleNewSpawnedCard.bind({});
 		}
+		else if(attackData.tryGrabCardFast === true){
+			preModifierFuncs = handleNewSpawnedCard.bind({});
+		}
 		const RANK_MULT = (1 + 0.1436*endRank);
 		damage *= RANK_MULT;
 
@@ -494,10 +497,12 @@ var ClassScoundrel = {
 				// Charged shot while having the super activated. With rank V boost
 				'S'    : scoundrel.getAttackFromInfo({bulletCount:"MAX",rank:5,super:true}),
 				// 'S'    : new Attack(1.71,  		SUPER_BOOST_SCOUNDREL*5851*RANK_V*3.53*NORMAL_BOOST_SCOUNDREL, true, 	0, 0, 0, 	0.08, 10, 1, 	1, 0,"","", false, increaseCritChance, useCard),
-
+				'g'    : scoundrel.getAttackFromInfo({time:0,bulletCount:"MAX",rank:5,super:true}),
+				
 				// (D)eck (action that spawns a new card and do something with it. Then it will be used on the charged shot)
 				'D'    : scoundrel.getAttackFromInfo({tryGrabCard:true}),
 				// 'D'    : new Attack(SCOUNDREL_CARD_TIME,  		0, true,  							0.00, 0, 0, 	0.00, 0, 0, 	0, 0,"","", false, handleNewSpawnedCard), // Nothing card
+				'd'    : scoundrel.getAttackFromInfo({tryGrabCardFast:true}),
 				// Renew (constant heal tile)
 				'h'    : new Attack(0.0,		0, true,	0, 20, 1,	0.00, 0, 0, 	0, 0,"","H"),
 				// Bard passive (constant heal tile)
