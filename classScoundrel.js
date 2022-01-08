@@ -235,7 +235,7 @@ function Scoundrel(data){
 					attack.tiles = BURN_CARD_TILE;
 				}
 				break;
-
+		}
 		// Make a new deck if there are no cards left in the deck.
 		if(graphSpecificData.deck.length == 0){
 			graphSpecificData.deck = generateRandomDeck();
