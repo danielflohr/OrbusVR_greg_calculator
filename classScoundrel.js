@@ -217,7 +217,7 @@ function Scoundrel(data){
 			case 4:
 				if(cardInHand == CARD_FROST || cardInHand == CARD_HEAL){
 					graphSpecificData.burnEffect = EFFECT_BOOST;
-					attack.tiles = BURN_CARD_TILE;
+					//attack.tiles = BURN_CARD_TILE;
 					if(graphSpecificData.storedCard == CARD_POISON){
 						graphSpecificData.shootCard = CARD_POISON;
 						graphSpecificData.storedCard = CARD_NONE;
@@ -232,7 +232,7 @@ function Scoundrel(data){
 				}
 				else if(cardInHand == CARD_ASH || cardInHand == CARD_WEAKNESS){
 					graphSpecificData.burnEffect = EFFECT_CHEAT;
-					attack.tiles = BURN_CARD_TILE;
+					//attack.tiles = BURN_CARD_TILE;
 				}
 				break;
 		}
@@ -294,6 +294,7 @@ function Scoundrel(data){
 		if(graphSpecificData.shootCard != CARD_NONE){
 			if(graphSpecificData.burnEffect == EFFECT_BOOST){
 				boost += 0.22725;
+				attack.tiles = BURN_CARD_TILE;
 			}
 			else if(graphSpecificData.burnEffect == EFFECT_CHEAT){
 				addToDeckRandom(graphSpecificData.deck, graphSpecificData.shootCard);
@@ -302,10 +303,13 @@ function Scoundrel(data){
 			// Add a new poison DoT right after the attack with the poison card.
 			if(graphSpecificData.shootCard == CARD_POISON){
 				if(graphSpecificData.burnEffect == EFFECT_BOOST){
-					SCOUNDREL_NEW_SPAWNED_POISON.dotTimes = 14;
+					SCOUNDREL_NEW_SPAWNED_POISON.dotTimes = 12;
 				} else{
-					SCOUNDREL_NEW_SPAWNED_POISON.dotTimes = 10;
+					SCOUNDREL_NEW_SPAWNED_POISON.dotTimes = 8;
 				}
+				if(savedScoundrel.talentlvl5 == "Slow Burn"{
+					SCOUNDREL_NEW_SPAWNED_POISON.dotTimes += 2;
+			   	}
 				var newAttack = clone(SCOUNDREL_NEW_SPAWNED_POISON);
 				targetPatternData.pattern.splice(targetPatternData.patternIdx+1, 0, newAttack);
 			}
