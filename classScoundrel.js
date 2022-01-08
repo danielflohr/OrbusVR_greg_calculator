@@ -307,7 +307,7 @@ function Scoundrel(data){
 				} else{
 					SCOUNDREL_NEW_SPAWNED_POISON.dotTimes = 8;
 				}
-				if(savedScoundrel.talentlvl5 == "Slow Burn"{
+				if(savedScoundrel.talentlvl5 == "Slow Burn"){
 					SCOUNDREL_NEW_SPAWNED_POISON.dotTimes += 2;
 			   	}
 				var newAttack = clone(SCOUNDREL_NEW_SPAWNED_POISON);
