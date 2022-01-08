@@ -187,7 +187,7 @@ if (needsDefaultValues || debug) {
 		}
 	};
 	res[SCOUNDREL_VALUE] = {
-		'scott': {
+		'scott no intentional poison empower': {
 			savedAttacks: "X f BBBB(CCB CBB CB)*15 SssSsC BBBB(CCB CBB CB)*15 \nD*150",
 			savedTilesets: ['A26', '362F', 'F23', 'F62', 'F6A2'],
 			usingPotsFlag: true,
@@ -197,6 +197,28 @@ if (needsDefaultValues || debug) {
 			armourAffixes: {critChance:2*RING_CRIT_CHANCE,critDamage:0.08+RING_EMPOWERED,projectileDamage:0.04},
 			calcCount:100,
 			PLAY_STYLE:1,
+		},
+		'scott always intentional poison empower': {
+			savedAttacks: "X f BBBB(CCB CBB CB)*15 SssSsC BBBB(CCB CBB CB)*15 \nD*150",
+			savedTilesets: ['A26', '362F', 'F23', 'F62', 'F6A2'],
+			usingPotsFlag: true,
+			usingTilesetsFlag: true,
+			averagingCrits: true,
+			weaponAffixes: [{"lvl":30},{"plusLvl":7},{"strength":168},{"intellect":168},{"ICEHEART":{}},{"BLEED":{}}],
+			armourAffixes: {critChance:2*RING_CRIT_CHANCE,critDamage:0.08+RING_EMPOWERED,projectileDamage:0.04},
+			calcCount:100,
+			PLAY_STYLE:2,
+		},
+		'infiniterune': {
+			savedAttacks: "X f BBBB(CCB CBB CB)*15 SssSsC BBBB(CCB CBB CB)*15 \nD*150",
+			savedTilesets: ['A26', '362F', 'F23', 'F62', 'F6A2'],
+			usingPotsFlag: true,
+			usingTilesetsFlag: true,
+			averagingCrits: true,
+			weaponAffixes: [{"lvl":30},{"plusLvl":7},{"strength":168},{"intellect":168},{"ICEHEART":{}},{"BLEED":{}}],
+			armourAffixes: {critChance:2*RING_CRIT_CHANCE,critDamage:0.08+RING_EMPOWERED,projectileDamage:0.04},
+			calcCount:100,
+			PLAY_STYLE:3,
 		},
 		'scott musket': {
 			savedAttacks: "X f BBBB(CCB CBB CB)*15 SssSsC BBBB(CCB CBB CB)*15 \nD*150",
@@ -218,7 +240,7 @@ if (needsDefaultValues || debug) {
 			weaponAffixes: [{"lvl":30},{"plusLvl":7},{"strength":168},{"intellect":168},{"ICEHEART":{}},{"BLEED":{}}],
 			armourAffixes: {critChance:2*RING_CRIT_CHANCE,critDamage:0.08+RING_EMPOWERED,projectileDamage:0.04},
 			calcCount:100,
-			PLAY_STYLE:2,
+			PLAY_STYLE:4,
 		},
 		'lavawhale musket': {
 			savedAttacks: "X f (CCB CB)*15 SSsSsS (CCB CB)*15 \nD*150 \n(h@)*20",
@@ -229,7 +251,7 @@ if (needsDefaultValues || debug) {
 			weaponAffixes: [{"lvl":30},{"plusLvl":7},{"strength":168},{"intellect":168},{"ICEHEART":{}},{"BLEED":{}}],
 			armourAffixes: {critChance:2*RING_CRIT_CHANCE,critDamage:0.08+RING_EMPOWERED,projectileDamage:0.04},
 			calcCount:100,
-			PLAY_STYLE:2,
+			PLAY_STYLE:4,
 		}
 	};
 	res[RANGER_VALUE] = {
