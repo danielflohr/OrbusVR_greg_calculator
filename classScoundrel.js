@@ -21,6 +21,7 @@ function Scoundrel(data){
 	const CARD_WEAKNESS = 4;
 	const CARD_FLAME = 5;
 	const CARD_HEAL = 6;
+	var hasBurned = 0;
 	
 	let BASE_CRIT_CHANCE_SCOUNDREL = globalArmourCritChance;
 
@@ -218,6 +219,7 @@ function Scoundrel(data){
 				if(cardInHand == CARD_FROST || cardInHand == CARD_HEAL){
 					graphSpecificData.burnEffect = EFFECT_BOOST;
 					//attack.tiles = BURN_CARD_TILE;
+					hasBurned = 1;
 					if(graphSpecificData.storedCard == CARD_POISON){
 						graphSpecificData.shootCard = CARD_POISON;
 						graphSpecificData.storedCard = CARD_NONE;
@@ -233,6 +235,7 @@ function Scoundrel(data){
 				else if(cardInHand == CARD_ASH || cardInHand == CARD_WEAKNESS){
 					graphSpecificData.burnEffect = EFFECT_CHEAT;
 					//attack.tiles = BURN_CARD_TILE;
+					hasBurned = 1;
 				}
 				break;
 		}
@@ -292,9 +295,13 @@ function Scoundrel(data){
 
 		// Add damage to the rotation when a card is being used to shoot.
 		if(graphSpecificData.shootCard != CARD_NONE){
+			if(hasBurned == 1)
+			{
+				attack.tiles = BURN_CARD_TILE;
+				hasBurned = 0;
+			}
 			if(graphSpecificData.burnEffect == EFFECT_BOOST){
 				boost += 0.22725;
-				attack.tiles = BURN_CARD_TILE;
 			}
 			else if(graphSpecificData.burnEffect == EFFECT_CHEAT){
 				addToDeckRandom(graphSpecificData.deck, graphSpecificData.shootCard);
