@@ -210,8 +210,8 @@ if (needsDefaultValues || debug) {
 			PLAY_STYLE:1,
 		},
 		'lavawhale': {
-			savedAttacks: "X Df (DCDCB DCB)*15 DSDSsDSsDS (DCDCB DCB)*15",
-			savedTilesets: ['F32', '2F3','32F', '3A2', '23A'],
+			savedAttacks: "X f (CCB CB)*15 SSsSsS (CCB CB)*15 \nD*150",
+			savedTilesets: ['72F', '7F2','F72', '27F', '2F7'],
 			usingPotsFlag: true,
 			usingTilesetsFlag: true,
 			averagingCrits: true,
@@ -221,8 +221,8 @@ if (needsDefaultValues || debug) {
 			PLAY_STYLE:2,
 		},
 		'lavawhale musket': {
-			savedAttacks: "X f BBBB(CCB CBB CB)*15 SssSsC BBBB(CCB CBB CB)*15 \nD*150",
-			savedTilesets: ['A26', '362F', 'F23', 'F62', 'F6A2'],
+			savedAttacks: "X f (CCB CB)*15 SSsSsS (CCB CB)*15 \nD*150 \n(h@)*20",
+			savedTilesets: ['F7H', 'FH7', 'FH72', 'F72H', 'B7H'],
 			usingPotsFlag: true,
 			usingTilesetsFlag: true,
 			averagingCrits: true,
