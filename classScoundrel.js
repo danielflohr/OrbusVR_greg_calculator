@@ -598,6 +598,9 @@ var ClassScoundrel = {
 				// Time spacing (renew)
 				'@'    : new Attack(14,			0, true,	0, 0, 0,	0.00, 0, 0, 	0, 0,"",""),
 				// Time spacing (full basket chargeshot-2delays)
+				'$'    : new Attack(14,			0, true,	0, 0, 0,	0.00, 0, 0, 	0, 0,"",""),
+				// Time spacing (full basket chargeshot-2delays)
+				
 				'%'    : new Attack(2.01,			0, true,	0, 0, 0,	0.00, 0, 0, 	0, 0,"",""),
 			},
 			critTalentList : []
