@@ -276,8 +276,7 @@ function Scoundrel(data){
 					attack.tiles = BURN_CARD_TILE;
 				}
 				else if(cardInHand == CARD_FLAME){
-					graphSpecificData.burnEffect = EFFECT_SPREAD;
-					attack.tiles = BURN_CARD_TILE;
+					graphSpecificData.shootCard = cardInHand;
 				}
 				else if(cardInHand == CARD_POISON){			
 					graphSpecificData.shootCard = cardInHand;
