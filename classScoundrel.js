@@ -294,9 +294,8 @@ function Scoundrel(data){
 				else if(cardInHand == CARD_FLAME){	
 					graphSpecificData.shootCard = cardInHand;
 				}
-				else if(cardInHand == CARD_POISON){
-					graphSpecificData.burnEffect = EFFECT_SPREAD;
-					attack.tiles = BURN_CARD_TILE;
+				else if(cardInHand == CARD_POISON){	
+					graphSpecificData.shootCard = cardInHand;
 				}
 				else if(cardInHand == CARD_ASH || cardInHand == CARD_WEAKNESS){
 					graphSpecificData.burnEffect = EFFECT_CHEAT;
