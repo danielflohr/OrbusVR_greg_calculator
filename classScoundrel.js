@@ -551,21 +551,6 @@ var ClassScoundrel = {
 				break;
 				
 		}
-		if(globalLoadout.PLAY_STYLE < 5)
-		{
-			
-		}
-		else if(globalLoadout.PLAY_STYLE == 5)
-		{
-			
-		}
-		else
-		{
-			var scoundrel = new Scoundrel({
-				talentlvl5:"Slow Burn",talentlvl10:"Stack The Deck",talentlvl15:"On the Line",talentlvl20:"Break Shot",talentlvl30:"True Gambler",
-				strBoost:globalStrengthBoost, intBoost:globalIntellectBoost,projectileIncrease:globalArmourProjectileDamage
-			});
-		}
 		savedScoundrel = scoundrel;
 
 		// rank V (71.897% increase) Most scoundrel damage is pre-calculated to have the rank V dps increase.
