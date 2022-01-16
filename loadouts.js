@@ -277,7 +277,7 @@ if (needsDefaultValues || debug) {
 		},
 		'spoog poison': {
 			savedAttacks: "X df ($d##fB#####B $d##fB#####B $d##fB)*15 $d##gs#####s $d##gs#####s ($d##fB#####B $d##fB#####B $d##fB)*15",
-			savedTilesets: ['F62', '2F6','62F', '26A', '6A2'],
+			savedTilesets: ['F62', '2F6','62F', '6B2', '6A2'],
 			usingPotsFlag: true,
 			usingTilesetsFlag: true,
 			averagingCrits: true,
