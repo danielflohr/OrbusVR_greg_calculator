@@ -274,6 +274,28 @@ if (needsDefaultValues || debug) {
 			armourAffixes: {critChance:2*RING_CRIT_CHANCE,critDamage:0.08+RING_EMPOWERED,projectileDamage:0.04},
 			calcCount:100,
 			PLAY_STYLE:5,
+		},
+		'spoog poison': {
+			savedAttacks: "X df (%d##fB#####B %d##fB#####B %d##fB)*15 %d##gs#####s %d##gs#####s (%d##fB#####B %d##fB#####B %d##fB)*15",
+			savedTilesets: ['F62', '2F6','62F', '26A', '6A2'],
+			usingPotsFlag: true,
+			usingTilesetsFlag: true,
+			averagingCrits: true,
+			weaponAffixes: [{"lvl":30},{"plusLvl":7},{"strength":168},{"intellect":168},{"ICEHEART":{}},{"BLEED":{}}],
+			armourAffixes: {critChance:2*RING_CRIT_CHANCE,critDamage:0.08+RING_EMPOWERED,projectileDamage:0.04},
+			calcCount:100,
+			PLAY_STYLE:6,
+		},
+		'spoog flame': {
+			savedAttacks: "X df (%d##fB#####B %d##fB#####B %d##fB)*15 %d##gs#####s %d##gs#####s (%d##fB#####B %d##fB#####B %d##fB)*15",
+			savedTilesets: ['F62', '2F6','62F', '26B', '6B2'],
+			usingPotsFlag: true,
+			usingTilesetsFlag: true,
+			averagingCrits: true,
+			weaponAffixes: [{"lvl":30},{"plusLvl":7},{"strength":168},{"intellect":168},{"ICEHEART":{}},{"BLEED":{}}],
+			armourAffixes: {critChance:2*RING_CRIT_CHANCE,critDamage:0.08+RING_EMPOWERED,projectileDamage:0.04},
+			calcCount:100,
+			PLAY_STYLE:7,
 		}
 	};
 	res[RANGER_VALUE] = {
