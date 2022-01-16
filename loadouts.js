@@ -200,7 +200,7 @@ if (needsDefaultValues || debug) {
 		},
 		'scott always intentional poison empower': {
 			savedAttacks: "X f BBBB(CCB CBB CB)*15 SssSsC BBBB(CCB CBB CB)*15 \nD*150",
-			savedTilesets: ['A26', '362F', 'F26', 'F62', 'F6A2'],
+			savedTilesets: ['A26', '26F', '2F6', 'F62', 'F6A2'],
 			usingPotsFlag: true,
 			usingTilesetsFlag: true,
 			averagingCrits: true,
@@ -211,7 +211,7 @@ if (needsDefaultValues || debug) {
 		},
 		'infiniterune': {
 			savedAttacks: "X f BBBB(CCB CBB CB)*15 SssSsC BBBB(CCB CBB CB)*15 \nD*150",
-			savedTilesets: ['A26', '362F', 'F26', 'F62', 'F6A2'],
+			savedTilesets: ['A26', '26F', '2F6', 'F62', 'F6A2'],
 			usingPotsFlag: true,
 			usingTilesetsFlag: true,
 			averagingCrits: true,
