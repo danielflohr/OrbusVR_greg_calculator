@@ -13,6 +13,7 @@ function Scoundrel(data){
 	const EFFECT_NONE = -1;
 	const EFFECT_BOOST = 1;
 	const EFFECT_CHEAT = 2;
+	const EFFECT_SPREAD = 3;
 
 	const CARD_NONE = -1;
 	const CARD_FROST = 1;
@@ -269,6 +270,40 @@ function Scoundrel(data){
 					attack.tiles = BURN_CARD_TILE;
 				}
 				break;
+			case 6: //spoogs poison build
+				if(cardInHand == CARD_FROST || cardInHand == CARD_HEAL){
+					graphSpecificData.burnEffect = EFFECT_BOOST;
+					attack.tiles = BURN_CARD_TILE;
+				}
+				else if(cardInHand == CARD_FLAME){
+					graphSpecificData.burnEffect = EFFECT_SPREAD;
+					attack.tiles = BURN_CARD_TILE;
+				}
+				else if(cardInHand == CARD_POISON){			
+					graphSpecificData.shootCard = cardInHand;
+				}
+				else if(cardInHand == CARD_ASH || cardInHand == CARD_WEAKNESS){
+					graphSpecificData.burnEffect = EFFECT_CHEAT;
+					attack.tiles = BURN_CARD_TILE;
+				}
+				break;
+			case 7: //spoog flame build
+				if(cardInHand == CARD_FROST || cardInHand == CARD_HEAL){
+					graphSpecificData.burnEffect = EFFECT_BOOST;
+					attack.tiles = BURN_CARD_TILE;
+				}
+				else if(cardInHand == CARD_FLAME){	
+					graphSpecificData.shootCard = cardInHand;
+				}
+				else if(cardInHand == CARD_POISON){
+					graphSpecificData.burnEffect = EFFECT_SPREAD;
+					attack.tiles = BURN_CARD_TILE;
+				}
+				else if(cardInHand == CARD_ASH || cardInHand == CARD_WEAKNESS){
+					graphSpecificData.burnEffect = EFFECT_CHEAT;
+					attack.tiles = BURN_CARD_TILE;
+				}
+				break;
 		}
 		// Make a new deck if there are no cards left in the deck.
 		if(graphSpecificData.deck.length == 0){
@@ -343,6 +378,10 @@ function Scoundrel(data){
 				if(savedScoundrel.talentlvl5 == "Slow Burn"){
 					SCOUNDREL_NEW_SPAWNED_POISON.dotTimes += 2;
 			   	}
+				if(graphSpecificData.burnEffect == EFFECT_SPREAD)
+				{
+					SCOUNDREL_NEW_SPAWNED_POISON.dotTimes /= 2;
+				}
 				var newAttack = clone(SCOUNDREL_NEW_SPAWNED_POISON);
 				targetPatternData.pattern.splice(targetPatternData.patternIdx+1, 0, newAttack);
 			}
@@ -481,18 +520,49 @@ var ClassScoundrel = {
 		// // then 8 cards too. This means the time of a single card needs to be reduced to
 		// // mirror the time it takes to make a full card rotation (7.9473 cards)
 		// const CARD_TIME_REDUCTION_SCOUNDREL = 1.0 / 8.0 * 7.9473;
+		switch (globalLoadout.PLAY_STYLE)
+		{
+			case 1:
+			case 2:
+			case 3:
+			case 4:
+				var scoundrel = new Scoundrel({
+					talentlvl5:"Slow Burn",talentlvl10:"Quick Draw",talentlvl15:"On the Line",talentlvl20:"Break Shot",talentlvl30:"True Gambler",
+					strBoost:globalStrengthBoost, intBoost:globalIntellectBoost,projectileIncrease:globalArmourProjectileDamage
+				});
+				break;
+			case 5:
+				var scoundrel = new Scoundrel({
+					talentlvl5:"Full Chamber",talentlvl10:"Stack The Deck",talentlvl15:"On the Line",talentlvl20:"One Basket",talentlvl30:"True Gambler",
+					strBoost:globalStrengthBoost, intBoost:globalIntellectBoost,projectileIncrease:globalArmourProjectileDamage
+				});
+				break;
+			case 6:
+				var scoundrel = new Scoundrel({
+					talentlvl5:"Slow Burn",talentlvl10:"Quick Draw",talentlvl15:"On the Line",talentlvl20:"Break Shot",talentlvl30:"True Gambler",
+					strBoost:globalStrengthBoost, intBoost:globalIntellectBoost,projectileIncrease:globalArmourProjectileDamage
+				});
+				break;
+			default:
+				var scoundrel = new Scoundrel({
+					talentlvl5:"Slow Burn",talentlvl10:"Stack The Deck",talentlvl15:"On the Line",talentlvl20:"Break Shot",talentlvl30:"True Gambler",
+					strBoost:globalStrengthBoost, intBoost:globalIntellectBoost,projectileIncrease:globalArmourProjectileDamage
+				});
+				break;
+				
+		}
 		if(globalLoadout.PLAY_STYLE < 5)
 		{
-			var scoundrel = new Scoundrel({
-
-				talentlvl5:"Slow Burn",talentlvl10:"Quick Draw",talentlvl15:"On the Line",talentlvl20:"Break Shot",talentlvl30:"True Gambler",
-				strBoost:globalStrengthBoost, intBoost:globalIntellectBoost,projectileIncrease:globalArmourProjectileDamage
-			});
+			
 		}
-		else //if(globalLoadout.PLAY_STYLE == 4)
+		else if(globalLoadout.PLAY_STYLE == 5)
+		{
+			
+		}
+		else
 		{
 			var scoundrel = new Scoundrel({
-				talentlvl5:"Full Chamber",talentlvl10:"Stack The Deck",talentlvl15:"On the Line",talentlvl20:"One Basket",talentlvl30:"True Gambler",
+				talentlvl5:"Slow Burn",talentlvl10:"Stack The Deck",talentlvl15:"On the Line",talentlvl20:"Break Shot",talentlvl30:"True Gambler",
 				strBoost:globalStrengthBoost, intBoost:globalIntellectBoost,projectileIncrease:globalArmourProjectileDamage
 			});
 		}
