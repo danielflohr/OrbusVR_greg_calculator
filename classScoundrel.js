@@ -260,7 +260,9 @@ function Scoundrel(data){
 				}
 				// Always shoot flame cards because they do more damage.
 				else if(cardInHand == CARD_FLAME){
-					graphSpecificData.shootCard = cardInHand;
+					//graphSpecificData.shootCard = cardInHand;
+					graphSpecificData.burnEffect = EFFECT_SPREAD;
+					attack.tiles = BURN_CARD_TILE;
 				}
 				else if(cardInHand == CARD_POISON){			
 					graphSpecificData.shootCard = cardInHand;
